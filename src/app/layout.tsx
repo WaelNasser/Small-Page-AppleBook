@@ -1,17 +1,12 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+/** @format */
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import type { Metadata } from "next";
+import { Sofadi_One } from "next/font/google"; // Import Sofadi One from Google Fonts
+import "./globals.css";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+
+const sofadiOne = Sofadi_One({ subsets: ["latin"], weight: ["400"] }); // Use Sofadi One font
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={sofadiOne.className}>
+        <Header />
+        <main className="dark:bg-gray-800">{children}</main>
+        <Footer />
       </body>
     </html>
   );
